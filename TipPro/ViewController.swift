@@ -24,11 +24,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 
-    @IBAction func calculateTip(sender: AnyObject) {
+    @IBAction func calculateTip(_ sender: AnyObject) {
         guard let billAmount = Double(billAmountField.text!) else {
             // show error
             billAmountField.text = ""
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         let roundedTipAmount = roundedBillAmount * tipPercentage
         let totalAmount = roundedBillAmount + roundedTipAmount
         
-        if (!billAmountField.editing) {
+        if (!billAmountField.isEditing) {
             billAmountField.text = String(format: "%.2f", roundedBillAmount)
         }
         tipAmountField.text = String(format: "%.2f", roundedTipAmount)
